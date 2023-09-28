@@ -74,3 +74,4 @@ C:\Users\mohamed fekry\source\repos\MarkitingAPI\MarkitingAPI\obj\Debug\net7.0\r
 C:\Users\mohamed fekry\source\repos\MarkitingAPI\MarkitingAPI\obj\Debug\net7.0\MarkitingAPI.pdb
 C:\Users\mohamed fekry\source\repos\MarkitingAPI\MarkitingAPI\obj\Debug\net7.0\MarkitingAPI.genruntimeconfig.cache
 C:\Users\mohamed fekry\source\repos\MarkitingAPI\MarkitingAPI\obj\Debug\net7.0\ref\MarkitingAPI.dll
+C:\Users\mohamed fekry\source\repos\MarkitingAPI\MarkitingAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -1,6 +1,8 @@
 
 using MarkitingAPI.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MarkitingAPI
 {
@@ -18,6 +20,19 @@ namespace MarkitingAPI
        options.UseSqlServer(builder.Configuration.GetConnectionString("DB")));
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection("SecretKey").Value);
+            builder.Services.AddAuthentication().AddJwtBearer(op =>
+            {
+                op.SaveToken = true;
+                op.TokenValidationParameters = new TokenValidationParameters
+                {
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuerSigningKey = true,
+                    ValidateAudience = false,
+                    ValidateIssuer = false
+                };
+
+            });
 
             var app = builder.Build();
 
@@ -34,7 +49,7 @@ namespace MarkitingAPI
            
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

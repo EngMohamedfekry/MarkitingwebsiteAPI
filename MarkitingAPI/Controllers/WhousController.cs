@@ -19,6 +19,7 @@ namespace MarkitingAPI.Controllers
 
         [HttpPost]
         [Route("AddDescription")]
+        [Authorize]
         public IActionResult AddDescription(whous who)
         {
             if(who.Description != null)
@@ -30,11 +31,23 @@ namespace MarkitingAPI.Controllers
         }
         [HttpGet]
         [Route("GetAllDescription")]
+        [Authorize]
         public IActionResult GetAllDescription()
         {
             List<whous> who = context.whouss.ToList();
 
             return Ok(who);
+        }
+        [HttpDelete]
+        [Route("DeleteDescription")]
+        [Authorize]
+        public IActionResult DeleteDescription(int id)
+        {
+            whous us = context.whouss.FirstOrDefault(a => a.Id == id);
+            context.whouss.Remove(us);
+            context.SaveChanges();
+
+            return Ok();
         }
     }
    
